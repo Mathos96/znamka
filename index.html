@@ -4,7 +4,7 @@
 <script type="text/javascript">
 function calc()
 {
-  let x=parseInt(document.forms["form"]["body"].value);
+  let x=parseInt(document.f.points.value);
   if(isNan(x))
   {
     alert("Špatný formát vstupu!!");
@@ -24,8 +24,8 @@ function calc()
 
 <body>
 <h1>Stránka na výpočet hodnocení</h1>
-<form name="form">
-  Počet bodů: <input type="number" name="body"><input type="button" value="Vypočítej" onclick="calc();">
+<form name="f">
+  Počet bodů: <input type="number" name="points"><input type="button" value="Vypočítej" onclick="calc();">
 </form>
 <div id="tableDiv">
 Lopuch
