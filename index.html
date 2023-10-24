@@ -5,10 +5,10 @@
 function calc()
 {
   let x=parseInt(document.forms["form"]["body"].value);
-  if(x==NaN)
+  if(isNan(x))
   {
-    alert("Prázdné body!!");
-    return false;
+    alert("Špatný formát vstupu!!");
+    return;
   }
   //generate table
   let table="<table class="resultTable">";
@@ -25,7 +25,7 @@ function calc()
 <body>
 <h1>Stránka na výpočet hodnocení</h1>
 <form name="form">
-  Počet bodů: <input type="number" name="body" onclick="calc();"><input type="button" value="Vypočítej">
+  Počet bodů: <input type="number" name="body"><input type="button" value="Vypočítej" onclick="calc();">
 </form>
 <div id="tableDiv>
 pass
