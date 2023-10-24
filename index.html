@@ -4,12 +4,19 @@
 <script>
 function calc()
 {
-  let x=document.forms["form"]["body"].value;
-  if(x=="")
+  let x=parseInt(document.forms["form"]["body"].value);
+  if(x==NaN)
   {
     alert("Prázdné body!!");
     return false;
   }
+  //generate table
+  let table="<table class="resultTable">";
+  let procenta=[
+  for(let i=0;i<10;i++)
+  {
+  }
+  document.getElementById("tableDiv").innerHTML=table;
 }
 </script>
 </head>
