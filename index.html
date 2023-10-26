@@ -21,8 +21,13 @@ function calc()
   let procenta=[];
   for(let i=0;i<10;i++)
   {
+    table+="<tr>";
+    table+="<td>";
+    table+=i.toString();
+    table+="</td>";
+    table+="</tr>";
   }
-  //table=table+"<\\table>";
+  table+="</table>";
   document.getElementById("tableDiv").innerHTML=table;
 }
 </script>
