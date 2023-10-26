@@ -19,11 +19,16 @@ function calc()
   //generate table
   let table="<table class=\"resultTable\">";
   let procenta=[];
-  for(let i=0;i<10;i++)
+  for(let i=0;i<5;i++)
   {
     table+="<tr>";
+    //grade
     table+="<td>";
-    table+=i.toString();
+    table+=(i+1).toString();
+    table+="</td>";
+    //points
+    table+="<td>";
+    table+=((i+1)*56).toString();
     table+="</td>";
     table+="</tr>";
   }
