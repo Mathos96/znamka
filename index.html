@@ -25,7 +25,8 @@ function calc()
   }
   //generate table
   let table="<table class=\"resultTable\"><tbody>";
-  table+="<tr><th colspan=\"3\">Bodování</th></tr>";
+  table+="<tr><th class=\"top\" colspan=\"4\">Bodování</th></tr>";
+  table+="<tr><th colspan=\"1\">Známka</th><th colspan=\"3\">Rozpětí</th></tr>";
   let percentage=[[[100,85],[84,69],[68,52],[51,33],[32,0]]];
   let sel=0;
   let last=x;
@@ -33,7 +34,7 @@ function calc()
   {
     table+="<tr>";
     //grade
-    table+="<td>";
+    table+="<td class=\"grade\">";
     table+=(i+1).toString();
     table+="</td>";
     //points
@@ -50,6 +51,7 @@ function calc()
     last=p2-1;
     table+=p1.toString();
     table+="</td>";
+    table+="<td>"+"-"+"</td>";
     table+="<td>";
     table+=p2.toString();
     table+="</td>";
@@ -68,6 +70,7 @@ function calc()
 </form>
 <div class="mainContent">
 <div id="tableDiv">
+  <table class="resultTable"><tbody><tr><th class="top" colspan="4">Bodování</th></tr><tr><th colspan="1">Známka</th><th colspan="3">Rozpětí</th></tr><tr><td class="grade">1</td><td></td><td>-</td><td></td></tr><tr><td class="grade">2</td><td></td><td>-</td><td></td></tr><tr><td class="grade">3</td><td></td><td>-</td><td></td></tr><tr><td class="grade">4</td><td></td><td>-</td><td></td></tr><tr><td class="grade">5</td><td></td><td>-</td><td></td></tr></tbody></table>
 </div>
 </div>
 </body>
