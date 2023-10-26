@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link type="text/css" href="znamka.css" media="all" rel="stylesheet">
 <script type="text/javascript">
 function calc()
 {
@@ -16,9 +17,18 @@ function calc()
     document.f.points.value="20";
     return;
   }
+  if(x>1000)
+  {
+    alert("Počet bodů nemůže být víc než 1000!");
+    document.f.points.value="20";
+    return;
+  }
   //generate table
-  let table="<table class=\"resultTable\">";
-  let procenta=[];
+  let table="<table class=\"resultTable\"><tbody>";
+  table+="<tr><th colspan=\"3\">Bodování</th></tr>";
+  let percentage=[[[100,85],[84,69],[68,52],[51,33],[32,0]]];
+  let sel=0;
+  let last=x;
   for(let i=0;i<5;i++)
   {
     table+="<tr>";
@@ -28,11 +38,24 @@ function calc()
     table+="</td>";
     //points
     table+="<td>";
-    table+=((i+1)*56).toString();
+    let indx=i+1;
+    if(indx>=5)
+    {
+      indx=0;
+    }
+    p0=((percentage[sel][i][1]+percentage[sel][indx][0])/200.0)*x;
+    p1=last;
+    p2=Math.ceil((percentage[sel][i][1]/100.0)*x);
+    //or floor, but there will be minimal range at 1st grade
+    last=p2-1;
+    table+=p1.toString();
+    table+="</td>";
+    table+="<td>";
+    table+=p2.toString();
     table+="</td>";
     table+="</tr>";
   }
-  table+="</table>";
+  table+="</tbody></table>";
   document.getElementById("tableDiv").innerHTML=table;
 }
 </script>
@@ -41,10 +64,11 @@ function calc()
 <body>
 <h1>Stránka na výpočet hodnocení</h1>
 <form name="f">
-  Počet bodů: <input type="number" name="points" min="1" value="20"><input type="button" value="Vypočítej" onclick="calc();">
+  Počet bodů: <input class="num" type="number" name="points" min="1" max="1000" value="20"><input class="btn" type="button" value="Vypočítej" onclick="calc();">
 </form>
+<div class="mainContent">
 <div id="tableDiv">
-Lopuch
+</div>
 </div>
 </body>
 </html>
