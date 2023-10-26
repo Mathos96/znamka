@@ -10,6 +10,12 @@ function calc()
     alert("Špatný formát vstupu!!");
     return;
   }
+  if(x<1)
+  {
+    alert("Rozsah bodů může být jen 1-inf");
+    document.f.points.value="20";
+    return;
+  }
   //generate table
   let table="<table class=\"resultTable\">";
   let procenta=[];
