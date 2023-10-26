@@ -85,7 +85,7 @@ form
     color: cornsilk;
 }
 
-.resultTable th
+.top
 {
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -96,10 +96,25 @@ form
     padding: 8px 5px;
 }
 
+.resultTable th
+{
+    background-color: #ac5a61;
+    color: cornsilk;
+    text-align: center;
+    text-shadow: #bea5ff 1px 0 10px;
+    padding: 8px 3px;
+}
+
 .resultTable td
 {
-    padding: 8px 5px;
+    padding: 8px 3px;
     text-align: center;
+}
+
+.grade
+{
+    border-right: 1px solid #ff97a0;
+    font-weight: bold;
 }
 
 .resultTable tbody tr
