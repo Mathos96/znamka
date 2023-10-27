@@ -5,7 +5,7 @@
 <script type="text/javascript">
 function calc()
 {
-  x=parseInt(document.f.points.value);
+  x=parseInt(document.getElementById("points").value);
   if(isNaN(x))
   {
     alert("Špatný formát vstupu!!");
@@ -14,21 +14,29 @@ function calc()
   if(x<1)
   {
     alert("Počet bodů nemůže být záporný ani nula!!");
-    document.f.points.value="20";
+    document.getElementById("points").value="20";
     return;
   }
   if(x>1000)
   {
     alert("Počet bodů nemůže být víc než 1000!");
-    document.f.points.value="20";
+    document.getElementById("points").value="20";
     return;
   }
   //generate table
   let table="<table class=\"resultTable\"><tbody>";
   table+="<tr><th class=\"top\" colspan=\"4\">Bodování</th></tr>";
   table+="<tr><th colspan=\"1\">Známka</th><th colspan=\"3\">Rozpětí</th></tr>";
-  let percentage=[[[100,85],[84,69],[68,52],[51,33],[32,0]]];
   let sel=0;
+  if(document.getElementById("SŠ").checked)
+  {
+    sel=0;
+  }
+  if(document.getElementById("ZŠ").checked)
+  {
+    sel=1;
+  }
+  let percentage=[[[100,85],[84,69],[68,52],[51,33],[32,0]],[[100,90],[89,75],[74,45],[44,25],[24,0]]];
   let last=x;
   for(let i=0;i<5;i++)
   {
@@ -65,9 +73,22 @@ function calc()
 
 <body>
 <h1>Stránka na výpočet hodnocení</h1>
-<form name="f">
-  Počet bodů: <input class="num" type="number" name="points" min="1" max="1000" value="20"><input class="btn" type="button" value="Vypočítej" onclick="calc();">
-</form>
+<div class="entry">
+  Počet bodů: <input class="num" type="number" id="points" min="1" max="1000" value="20" onchange="calc();"><input class="btn" type="button" value="Vypočítej" onclick="calc();">
+</div>
+<div class="optionsDiv">
+  <table class="optionsTable">
+    <tbody>
+      <tr>
+        <td>Druh hodnocení: </td>
+        <td><input type="radio" checked name="kind" id="SŠ" onchange="calc();"></td>
+        <td><label for="SŠ">SŠ</label></td>
+        <td><input type="radio" name="kind" id="ZŠ" onchange="calc();"></td>
+        <td><label for="ZŠ">ZŠ</label></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 <div class="mainContent">
 <div id="tableDiv">
   <table class="resultTable"><tbody><tr><th class="top" colspan="4">Bodování</th></tr><tr><th colspan="1">Známka</th><th colspan="3">Rozpětí</th></tr><tr><td class="grade">1</td><td></td><td>-</td><td></td></tr><tr><td class="grade">2</td><td></td><td>-</td><td></td></tr><tr><td class="grade">3</td><td></td><td>-</td><td></td></tr><tr><td class="grade">4</td><td></td><td>-</td><td></td></tr><tr><td class="grade">5</td><td></td><td>-</td><td></td></tr></tbody></table>
